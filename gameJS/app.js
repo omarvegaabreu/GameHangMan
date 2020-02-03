@@ -1,1 +1,1 @@
-prompt("connected app");
+"use strict";
