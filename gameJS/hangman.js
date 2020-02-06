@@ -36,21 +36,21 @@ Hangman.prototype.getPuzzle = function() {
 
 const wordOne = new Hangman("cat", 2);
 
-//guess c t z
-
-// console.log(wordOne.getGuesses());
-// print remaining guesses answer should be 1
-
 const wordTwo = new Hangman("new jersey", 3);
 
-console.log(wordOne.getPuzzle());
-console.log(wordOne.guesses);
+const getPuzzel = document.querySelector("#puzzel");
+getPuzzel.textContent = wordOne.getPuzzle();
 
-// guess w answer should be **w ******
+const guesses = document.querySelector("#guesses");
+guesses.textContent = wordOne.guesses;
+// console.log(wordOne.getPuzzle());
+// console.log(wordOne.guesses);
 
 window.addEventListener("keypress", e => {
   const keypress = String.fromCharCode(e.charCode);
   wordOne.getGuesses(keypress);
-  console.log(wordOne.getPuzzle());
-  console.log(wordOne.guesses);
+  // console.log(wordOne.getPuzzle());
+  getPuzzel.textContent = wordOne.getPuzzle();
+  // console.log(wordOne.guesses);
+  guesses.textContent = wordOne.guesses;
 });
