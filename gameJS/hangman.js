@@ -12,12 +12,6 @@ Hangman.prototype.getStatus = function() {
     this.lettersGuessed.includes(letter)
   );
 
-  // this.word.forEach(letter => {
-  //   if (this.lettersGuessed.includes(letter)) {
-  //   } else {
-  //     finished = false;
-  //   }
-  // });
   if (this.guesses === 0) {
     this.status = "failed";
   } else if (finished === true) {
