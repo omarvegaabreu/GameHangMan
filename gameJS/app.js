@@ -8,16 +8,15 @@ const getPuzzel = document.querySelector("#puzzel");
 getPuzzel.textContent = wordOne.getPuzzle();
 
 const guesses = document.querySelector("#guesses");
-guesses.textContent = wordOne.guesses;
+guesses.textContent = wordOne.getStatusMessage();
 wordOne.status;
 
-const message = document.querySelector("#message");
-message.textContent = wordOne.getStatusMessage();
+// const message = document.querySelector("#message");
+// message.textContent = wordOne.getStatusMessage();
 
 window.addEventListener("keypress", e => {
   const keypress = String.fromCharCode(e.charCode);
   wordOne.getGuesses(keypress);
   getPuzzel.textContent = wordOne.getPuzzle();
-  guesses.textContent = wordOne.guesses;
-  message.textContent = wordOne.getStatusMessage();
+  guesses.textContent = wordOne.getStatusMessage();
 });
