@@ -5,12 +5,23 @@ const Hangman = function(word, guesses) {
   this.guesses = guesses;
   this.lettersGuessed = [];
   this.status = "playing";
-  // console.log(this.status);
 };
 
 Hangman.prototype.getStatus = function() {
+  let finished = true;
+
+  this.word.forEach(letter => {
+    if (this.lettersGuessed.includes(letter)) {
+    } else {
+      finished = false;
+    }
+  });
   if (this.guesses === 0) {
     this.status = "failed";
+  } else if (finished) {
+    this.status = "finished";
+  } else {
+    this.status = "playing";
   }
 };
 
