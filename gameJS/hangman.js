@@ -8,17 +8,19 @@ const Hangman = function(word, guesses) {
 };
 
 Hangman.prototype.getStatus = function() {
-  let finished = true;
+  const finished = this.word.every(letter =>
+    this.lettersGuessed.includes(letter)
+  );
 
-  this.word.forEach(letter => {
-    if (this.lettersGuessed.includes(letter)) {
-    } else {
-      finished = false;
-    }
-  });
+  // this.word.forEach(letter => {
+  //   if (this.lettersGuessed.includes(letter)) {
+  //   } else {
+  //     finished = false;
+  //   }
+  // });
   if (this.guesses === 0) {
     this.status = "failed";
-  } else if (finished) {
+  } else if (finished === true) {
     this.status = "finished";
   } else {
     this.status = "playing";
