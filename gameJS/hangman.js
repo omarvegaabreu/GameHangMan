@@ -7,6 +7,18 @@ const Hangman = function(word, guesses) {
   this.status = "playing";
 };
 
+Hangman.prototype.getStatusMessage = function() {
+  let message = "";
+  const word = this.word.join("");
+  if (this.status === "playing") {
+    return (message = `${this.status}: You have ${this.guesses} guesses`);
+  } else if (this.status === "failed") {
+    return (message = `You ${this.status}. The correct answer was ${word}`);
+  } else {
+    return (message = "You win");
+  }
+};
+
 Hangman.prototype.getStatus = function() {
   const finished = this.word.every(letter =>
     this.lettersGuessed.includes(letter)
@@ -36,16 +48,18 @@ Hangman.prototype.getPuzzle = function() {
 };
 
 Hangman.prototype.getGuesses = function(guess) {
-  guess = guess.toLowerCase();
-  const goodGuess = !this.lettersGuessed.includes(guess);
-  const badGuess = !this.word.includes(guess);
+  if (this.status === "playing") {
+    guess = guess.toLowerCase();
+    const goodGuess = !this.lettersGuessed.includes(guess);
+    const badGuess = !this.word.includes(guess);
 
-  if (goodGuess) {
-    this.lettersGuessed.push(guess);
-  }
+    if (goodGuess) {
+      this.lettersGuessed.push(guess);
+    }
 
-  if (goodGuess && badGuess) {
-    this.guesses--;
+    if (goodGuess && badGuess) {
+      this.guesses--;
+    }
+    this.getStatus();
   }
-  this.getStatus();
 };
