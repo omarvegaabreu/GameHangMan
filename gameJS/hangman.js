@@ -6,7 +6,7 @@ class Hangman {
     this.lettersGuessed = [];
     this.status = "Playing";
   }
-  getStatusMessage() {
+  get statusMessage() {
     let message = "";
     const word = this.word.join("");
     if (this.status === "Playing") {
@@ -18,8 +18,8 @@ class Hangman {
     }
   }
   getStatus() {
-    const finished = this.word.every(letter =>
-      this.lettersGuessed.includes(letter)
+    const finished = this.word.every(
+      letter => this.lettersGuessed.includes(letter) || letter === " "
     );
 
     if (this.guesses === 0) {
@@ -30,7 +30,7 @@ class Hangman {
       this.status = "Playing";
     }
   }
-  getPuzzle() {
+  get puzzle() {
     let puzzle = "";
 
     this.word.forEach(letter => {
