@@ -15,3 +15,11 @@ window.addEventListener("keypress", e => {
   getPuzzel.textContent = wordOne.puzzle;
   guesses.textContent = wordOne.statusMessage;
 });
+
+getPuzzle((error, puzzle) => {
+  if (error) {
+    console.log(`Error: ${error}`);
+  } else {
+    console.log(puzzle);
+  }
+});
