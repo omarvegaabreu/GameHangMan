@@ -1,6 +1,6 @@
 "use strict";
 
-const wordOne = new Hangman("cave man", 2);
+const wordOne = new Hangman("Caterina", 15);
 
 const getPuzzel = document.querySelector("#puzzel");
 getPuzzel.textContent = wordOne.puzzle;

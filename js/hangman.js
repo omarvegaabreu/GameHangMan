@@ -14,7 +14,7 @@ class Hangman {
     } else if (this.status === "Failed") {
       return (message = `Nice try. The correct answer was: "${word}"`);
     } else {
-      return (message = "You win");
+      return (message = `You win`);
     }
   }
   getStatus() {
