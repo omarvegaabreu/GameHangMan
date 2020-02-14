@@ -34,11 +34,9 @@ class Hangman {
     let puzzle = "";
 
     this.word.forEach(letter => {
-      if (this.lettersGuessed.includes(letter) || letter === " ") {
-        puzzle += letter;
-      } else {
-        puzzle += "*";
-      }
+      this.lettersGuessed.includes(letter) || letter === " "
+        ? (puzzle += letter)
+        : (puzzle += "*");
     });
 
     return puzzle;
