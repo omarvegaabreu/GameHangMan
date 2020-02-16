@@ -15,11 +15,12 @@ window.addEventListener("keypress", e => {
   getPuzzel.textContent = wordOne.puzzle;
   guesses.textContent = wordOne.statusMessage;
 });
-getPuzzle("2", (error, puzzle) => {
-  error ? console.log(`Error: ${error}`) : console.log(puzzle);
-});
-getCountry("US", (error, country) => {
-  error
-    ? console.log(`Error:${error}`)
-    : console.log(`Country name: ${country}`);
-});
+
+getCountry("US").then(
+  country => {
+    console.log(country);
+  },
+  error => {
+    console.log(`ERROR:${error}`);
+  }
+);
