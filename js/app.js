@@ -24,3 +24,12 @@ getCountry("US").then(
     console.log(`ERROR:${error}`);
   }
 );
+
+getPuzzle().then(
+  data => {
+    console.log(data);
+  },
+  error => {
+    console.log(`ERROR:${error}`);
+  }
+);

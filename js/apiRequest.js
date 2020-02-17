@@ -7,12 +7,12 @@ const getPuzzle = wordCount =>
       if (e.target.readyState === 4 && e.target.status === 200) {
         const data = JSON.parse(e.target.responseText);
         resolved(data.puzzle);
-      } else if (e.target.readyState === 4) {
+      } else if (e.target.readyState === 4 && e.target.status !== 200) {
         rejected("An error has taken place");
       }
     });
 
-    request.open("GET", `http://puzzle.mead.io/puzzle?wordCount${wordCount}`);
+    request.open("GET", `http://puzzle.mead.io/puzzle?wordCount=${wordCount}`);
     request.send();
   });
 
@@ -28,7 +28,7 @@ const getCountry = countryCode =>
             country => country.alpha2Code === countryCode
           );
           resolved(`Country: ${country.name}`);
-        } else if (e.target.readyStatet === 4) {
+        } else if (e.target.readyStatet === 4 && e.target.status !== 200) {
           rejected("Unable to fetch data");
         }
       });
