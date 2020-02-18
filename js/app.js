@@ -16,20 +16,18 @@ window.addEventListener("keypress", e => {
   guesses.textContent = wordOne.statusMessage;
 });
 
-getCountry("US").then(
-  country => {
-    console.log(country);
-  },
-  error => {
-    console.log(`ERROR:${error}`);
-  }
-);
-
-getPuzzle().then(
+getPuzzle("2").then(
   data => {
     console.log(data);
   },
   error => {
-    console.log(`ERROR:${error}`);
+    console.log(error);
   }
 );
+getCountry("MX")
+  .then(countryCode => {
+    console.log(countryCode.name);
+  })
+  .catch(error => {
+    console.log(error);
+  });
