@@ -1,13 +1,24 @@
 "use strict";
 
-const wordOne = new Hangman("Caterina", 15);
+let wordOne;
 
 const getPuzzel = document.querySelector("#puzzel");
-getPuzzel.textContent = wordOne.puzzle;
+// getPuzzel.textContent = wordOne.puzzle;
 
 const guesses = document.querySelector("#guesses");
-guesses.textContent = wordOne.statusMessage;
-wordOne.status;
+// guesses.textContent = wordOne.statusMessage;
+// wordOne.status;
+
+const startGame = async () => {
+  const puzzel = await getPuzzle("2");
+  wordOne = new Hangman(puzzel, 10);
+  renderGame();
+};
+
+const renderGame = () => {
+  guesses.textContent = wordOne.statusMessage;
+  getPuzzel.textContent = wordOne.puzzle;
+};
 
 window.addEventListener("keypress", e => {
   const keypress = String.fromCharCode(e.charCode);
@@ -15,16 +26,7 @@ window.addEventListener("keypress", e => {
   getPuzzel.textContent = wordOne.puzzle;
   guesses.textContent = wordOne.statusMessage;
 });
-
-getPuzzle("2").then(
-  data => {
-    console.log(data);
-  },
-  error => {
-    console.log(error);
-  }
-);
-getCountry("MX")
+getLocation()
   .then(countryCode => {
     console.log(countryCode.name);
   })
