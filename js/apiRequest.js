@@ -1,9 +1,7 @@
 "use strict";
 
 const getPuzzle = async wordCount => {
-  const response = await fetch(
-    `http://puzzle.mead.io/puzzle?wordCount=${wordCount}`
-  );
+  //remember to add fetch call in env file.
 
   if (response.status === 200) {
     const data = await response.json();
