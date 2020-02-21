@@ -1,19 +1,22 @@
 "use strict";
 
 const getPuzzle = async wordCount => {
-  //remember to add fetch call in env file.
+  const response = await fetch(
+    `//puzzle.mead.io/puzzle?wordCount=${wordCount}`
+  );
 
   if (response.status === 200) {
     const data = await response.json();
-    const puzzelData = data.puzzle;
-    return puzzelData;
+    const puzzleData = data.puzzle;
+    console.log(puzzleData);
+    return puzzleData;
   } else {
     throw new Error("Unable to fetch puzzle");
   }
 };
 
 const getCountry = async countryCode => {
-  const response = await fetch("http://restcountries.eu/rest/v2/all");
+  const response = await fetch("//restcountries.eu/rest/v2/all");
   if (response.status === 200) {
     const data = await response.json();
     const dataCountryCode = data.find(
@@ -26,7 +29,7 @@ const getCountry = async countryCode => {
 };
 
 const getLocation = async () => {
-  //remember to add fetch call with api key env file not done
+  const response = await fetch("//ipinfo.io/json?token=b9315fbdb706b9");
 
   if (response.status === 200) {
     const data = await response.json();

@@ -2,30 +2,40 @@
 
 let wordOne;
 
-const getPuzzel = document.querySelector("#puzzel");
-// getPuzzel.textContent = wordOne.puzzle;
+const puzzleEl = document.querySelector("#puzzle");
 
 const guesses = document.querySelector("#guesses");
-// guesses.textContent = wordOne.statusMessage;
-// wordOne.status;
 
 const startGame = async () => {
-  const puzzel = await getPuzzle("2");
-  wordOne = new Hangman(puzzel, 10);
+  const puzzle = await getPuzzle("2");
+  wordOne = new Hangman(puzzle, 10);
   renderGame();
 };
 
 const renderGame = () => {
   guesses.textContent = wordOne.statusMessage;
-  getPuzzel.textContent = wordOne.puzzle;
+  puzzleEl.textContent = "";
+  wordOne.puzzle.split("").forEach(letter => {
+    const letterEl = document.createElement("span");
+    letterEl.textContent = letter;
+    puzzleEl.appendChild(letterEl);
+  });
 };
+startGame();
+const button = document.querySelector("#resetButton");
+button.addEventListener("click", e => {
+  startGame();
+  renderGame();
+});
 
 window.addEventListener("keypress", e => {
   const keypress = String.fromCharCode(e.charCode);
   wordOne.getGuesses(keypress);
-  getPuzzel.textContent = wordOne.puzzle;
+  puzzleEl.textContent = wordOne.puzzle;
   guesses.textContent = wordOne.statusMessage;
+  renderGame();
 });
+
 getLocation()
   .then(countryCode => {
     console.log(countryCode.name);
